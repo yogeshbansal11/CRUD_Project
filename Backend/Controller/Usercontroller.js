@@ -26,6 +26,8 @@ const save= async(req,res)=>{
   if(userEmail){
     return res.status(400).json({message: "email already exist"});
   }
+
+
   const salt = bcrypt.genSaltSync(10);
   console.log(`>>>>>>>>>salt>>>>>>>`,salt);
   const hash = bcrypt.hashSync(password,salt);
@@ -36,6 +38,8 @@ const save= async(req,res)=>{
     password: hash,
     dob,
   }
+
+  
   const userdata= await userModel(data)
   userdata.save()
     res.status(200).json(userdata) 
