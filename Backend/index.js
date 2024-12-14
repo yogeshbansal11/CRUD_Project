@@ -7,7 +7,6 @@ const app = express();
 const port = process.env.PORT||8080;
 const userRouter = require("./Route/UserRoute")
 
-app.use(cors());
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use('/abc',userRouter)
@@ -17,7 +16,6 @@ mongoose.connect(process.env.MONGOURL)
 }).catch((err)=>{
   console.log('error in connecting',err)
 })
-
 
 app.listen(port,()=>{
   console.log(`server is running on port ${port}`)
